@@ -1,0 +1,19 @@
+/*You have to put a ; between every CSS attribute!!!*/
+body {background-color: #800000}
+p {color: #ffffff}
+img {float: left; height: 25%; width:25%;}
+h1 {color: white;}
+label.first {color: #ffffff; font-weight: bold;}
+label.second {color: #f73333; font-weight: bold;}
+fieldset.first {border-color: #ffb3b3; background-color:#ff3333;}
+fieldset.second {border-color: #e60000; background-color:#ffcccc;}
+/* could have had .first to apply the style to everything that has the class first */
+legend {font-style: italic;}
+legend.first {color: #ffb3b3}
+legend.second {color: #e60000}
+#advice {visibility: hidden;}
+#time {color: white; font-size: large;}
+#footer {background: #ffce48; color: black;}
+.black{color: black;}
+/*ul {color: #f73333}*/
+/*onclick="window.location.href='https://wearethecity.com/top-3-romantic-gothic-hotels-uk'*/
