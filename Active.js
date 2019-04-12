@@ -1,6 +1,13 @@
 var time = document.getElementById("time");
 time.innerHTML = "Welcome!";
 
+function validateUsername() {
+
+}
+
+function validatePassword() {
+//validatex will call validatey to see if the submit button is visible
+}
 function search() {
     var priceRange = document.getElementById("cost").value;
     var downTown = document.getElementById("Downtown").checked;
