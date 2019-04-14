@@ -18,10 +18,10 @@ if (isset($_SESSION["username"])){
         <label class="first">Number of Rooms (Maximum Room Capacity: 5)<input type="Number" name="NbOfRooms"></label> <br><br>
         <!--We put the input inside the label so that when we click on "Number of rooms", the cursor goes to the box.-->
         <label class="first">Classical music enthusiast?</label> <br>
-        <label><input type="radio" name="ClassicalMusicFan" value="Yes">Yes</label><br>
-        <label><input type="radio" name="ClassicalMusicFan" value="No">No</label><br><br>
-        <label class="first">Check-in: &nbsp;&nbsp;<input type="date" name="CheckinDate"></label><br><br>
-        <label class="first">Check-out:	<input type="date" name="CheckinDate"></label><br>
+        <label><input type="radio" name="ClassicalMusicFan" value="y">Yes</label><br>
+        <label><input type="radio" name="ClassicalMusicFan" value="n">No</label><br><br>
+        <label class="first">Check-in: &nbsp;&nbsp;<input type="date"></label><br><br>
+        <label class="first">Check-out:	<input type="date"></label><br>
     </fieldset>
 
     <br>
@@ -42,11 +42,11 @@ if (isset($_SESSION["username"])){
             <li>
                 <label class="second">Do you have preferred locations for the hotel?<br></label>
                 <label><input id="Downtown" type="checkbox" name="Downtown" value="Downtown">Downtown</label>
-                <label><input type="checkbox" name="locations" value="Mtl East">Montreal East</label>
-                <label><input type="checkbox" name="locations" value="Mtl West">Montreal West</label>
-                <label><input type="checkbox" name="locations" value="Airport">Near the airport</label>
-                <label><input type="checkbox" name="locations" value="Oldport">Oldport</label>
-                <label><input type="checkbox" name="locations" value="Any">Don't care</label><br><br>
+                <label><input type="checkbox" value="y" name="Mtl East">Montreal East</label>
+                <label><input type="checkbox" value="y" name="Mtl West">Montreal West</label>
+                <label><input type="checkbox" value="y"" name="Airport">Near the airport</label>
+                <label><input type="checkbox" value="y" name="Oldport">Oldport</label>
+                <label><input type="checkbox" value="y" name="Any">Don't care</label><br><br>
             </li>
             <li>
                 <label class="second">Price Range/Cost per Night:
@@ -68,24 +68,17 @@ if (isset($_SESSION["username"])){
             </li>
             <li>
                 <label class="second">Special Facilities</label><br>
-                <label><input type="checkbox" name="Special" value="Minibar">Minibar</label>
-                <label><input type="checkbox" name="Special" value="Balcony">Balcony</label>
-                <label><input type="checkbox" name="Special" value="Pool">Pool</label>
-                <label><input type="checkbox" name="Special" value="Water Front">Water Front</label>
-                <label><input type="checkbox" name="Special" value="Garden Front">Garden Front</label>
+                <label><input type="checkbox" value="y" name="Minibar">Minibar</label>
+                <label><input type="checkbox" value="y" name="Balcony">Balcony</label>
+                <label><input type="checkbox" value="y" name="Pool">Pool</label>
+                <label><input type="checkbox" value="y" name="Water Front">Water Front</label>
+                <label><input type="checkbox" value="y" name="Garden Front">Garden Front</label>
             </li>
         </ul>
     </fieldset>
     <br>
 
-    <fieldset id="advice" class="second">
-        <legend class="second">Expert Suggestion</legend>
-        <ul>
-            <li>
-                It is very difficult to find a hotel room in this price range in Downtown
-            </li>
-        </ul>
-    </fieldset>
+
     <?php
     }
     ?>
@@ -106,11 +99,39 @@ if (isset($_SESSION["username"])){
 }
 if (isset($_POST)){
     //display the results of the search:
-    print_r($_POST);
+    var_dump($_POST);
     //Format of hotel.txt
     //
+    foreach ($_POST as $key=>$value){
+        echo "$key=>$value";
+    }
+    $found =0;
+    $dataSource = file("hotel.txt");
+    foreach ($dataSource as $hotel){
+        //dealing if one big string, containing all the info
+        foreach ($_POST as $key=>$value){
+            $satisfied = true;
+            // the === false is necessary because it may return 0 as an offset, which is considered false in php
+            //regular expressions can be used as well
+            if (strpos($hotel, "$key=>$value") === false)
+                $satisfied = false;
+        }
+        if ($satisfied){
+            $found++;
+        }
+    }
 }
 
 
 require "Footer.php";
 ?>
+
+
+<!--<fieldset id="advice" class="second">-->
+<!--    <legend class="second">Expert Suggestion</legend>-->
+<!--    <ul>-->
+<!--        <li>-->
+<!--            It is very difficult to find a hotel room in this price range in Downtown-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</fieldset>-->
