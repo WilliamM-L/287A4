@@ -5,7 +5,14 @@ require "Header.php";
 <form action="login.php">
     <label><input type="submit" id="login" value="LOGIN"></label>
 </form>
-<form action="search.php">
+
+<?php
+if (isset($_SESSION["username"])){
+   echo "<h4 id='login2'>Welcome, ".$_SESSION["username"].".</h4>";
+}
+?>
+
+<form action="Home.php" method="post">
     <fieldset class="first">
         <legend class="first">Reservation Information</legend>
         <label class="first">Number of Rooms (Maximum Room Capacity: 5)<input type="Number" name="NbOfRooms"></label> <br><br>
@@ -18,7 +25,9 @@ require "Header.php";
     </fieldset>
 
     <br>
+<?php if (isset($_SESSION["username"])){
 
+?>
     <fieldset class="second" name="second">
         <legend class="second">Room Specification</legend>
         <ul>
@@ -77,11 +86,31 @@ require "Header.php";
             </li>
         </ul>
     </fieldset>
+    <?php
+    }
+    ?>
     <p>Let's see what we can find...</p>
-    <input type="button" onclick="search()" value="Search">
-    <input type="reset">
     <input type="submit" value="Search">
+    <input type="reset">
 </form>
-<?php
+<?php if (!isset($_SESSION["username"])) {
+    //It must be put here, since putting this form in the other form would send us to Home.php again
+    ?>
+    <div id="restriction">
+        <p class="restriction">Most of the search options are only available to logged users! Log in to unlock them!</p>
+        <form action="login.php">
+            <label><input type="submit" value="LOGIN"></label>
+        </form>
+    </div>
+    <?php
+}
+if (isset($_POST)){
+    //display the results of the search:
+    print_r($_POST);
+    //Format of hotel.txt
+    //
+}
+
+
 require "Footer.php";
 ?>

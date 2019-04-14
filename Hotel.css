@@ -16,6 +16,10 @@ legend.second {color: #e60000}
 #footer {background: #ffce48; color: black;}
 .black{color: black;}
 #login{position: absolute; right:10px; top:15px;}
+#login2{position: absolute; right:10px; top:25px; color: white}
 #logging{visibility: hidden;}
+#information{color: #ff0565}
+#restriction{color: purple; position: absolute; left: 280px; top: 42%;}
+.restriction{color: purple;}
 /*ul {color: #f73333}*/
 /*onclick="window.location.href='https://wearethecity.com/top-3-romantic-gothic-hotels-uk'*/

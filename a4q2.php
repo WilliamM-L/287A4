@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); //Starts a new session or RESUMES an existing session
 if (isset($_POST["reset"]) and $_POST["reset"]=="yes"){
     session_unset();
     session_destroy();
