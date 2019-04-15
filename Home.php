@@ -45,7 +45,7 @@ if (isset($_SESSION["username"])){
                 <label><input type="checkbox" value="y" name="Mtl East">Montreal East</label>
                 <label><input type="checkbox" value="y" name="Mtl West">Montreal West</label>
                 <label><input type="checkbox" value="y"" name="Airport">Near the airport</label>
-                <label><input type="checkbox" value="y" name="Oldport">Oldport</label>
+                <label><input type="checkbox">Oldport</label> <!--not transmitted to the server, user doesn't care.-->
                 <label><input type="checkbox" value="y" name="Any">Don't care</label><br><br>
             </li>
             <li>
@@ -98,13 +98,18 @@ if (isset($_SESSION["username"])){
     <?php
 }
 if (isset($_POST)){
-    //display the results of the search:
-    var_dump($_POST);
-    //Format of hotel.txt
-    //
-    foreach ($_POST as $key=>$value){
-        echo "$key=>$value";
-    }
+    print_r($_POST);
+    //This section is used to populate the hotel.txt file with the right format.
+//    $file = fopen("hotel.txt","a");
+//    foreach ($_POST as $key=>$value){
+//        fwrite($file,"$key=>$value");
+//    }
+//    fwrite($file,"\n");
+//    fflush($file);
+//    fclose($file);
+    //end of section
+
+
     $found =0;
     $dataSource = file("hotel.txt");
     foreach ($dataSource as $hotel){
@@ -113,25 +118,21 @@ if (isset($_POST)){
             $satisfied = true;
             // the === false is necessary because it may return 0 as an offset, which is considered false in php
             //regular expressions can be used as well
-            if (strpos($hotel, "$key=>$value") === false)
+            if (strpos($hotel, "$key=>$value") === false){
                 $satisfied = false;
+                //A mismatch has been found, proceed to the next hotel
+                //If we do not break, $satisfied will be set to true again, which may lead to false positives
+                break;
+            }
         }
         if ($satisfied){
             $found++;
         }
     }
+    echo "<h2 id='result'> $found hotel(s) have been found that match all your criteria!</h2>";
 }
 
 
 require "Footer.php";
 ?>
 
-
-<!--<fieldset id="advice" class="second">-->
-<!--    <legend class="second">Expert Suggestion</legend>-->
-<!--    <ul>-->
-<!--        <li>-->
-<!--            It is very difficult to find a hotel room in this price range in Downtown-->
-<!--        </li>-->
-<!--    </ul>-->
-<!--</fieldset>-->

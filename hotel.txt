@@ -1,0 +1,6 @@
+NbOfRooms=>2ClassicalMusicFan=>ysingle/double=>1/1Downtown=>DowntownMtl_East=>ycost=><200Parkings=>2Minibar=>yBalcony=>yPool=>yGarden_Front=>y
+NbOfRooms=>5ClassicalMusicFan=>nsingle/double=>1/2Oldport=>ycost=><100Parkings=>0Balcony=>yPool=>y
+NbOfRooms=>1ClassicalMusicFan=>nsingle/double=>1/2Mtl_West=>ycost=><50Parkings=>0Balcony=>y
+NbOfRooms=>2ClassicalMusicFan=>ysingle/double=>1/1Mtl_East=>ycost=>RichParkings=>4Minibar=>yBalcony=>yPool=>yWater_Front=>yGarden_Front=>y
+NbOfRooms=>2ClassicalMusicFan=>nMtl_East=>yAirport=>ycost=><200Parkings=>3Minibar=>yPool=>y
+NbOfRooms=>2ClassicalMusicFan=>nDowntown=>DowntownAirport=>ycost=><200Parkings=>3Minibar=>yPool=>y

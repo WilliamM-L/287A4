@@ -11,7 +11,6 @@ fieldset.second {border-color: #e60000; background-color:#ffcccc;}
 legend {font-style: italic;}
 legend.first {color: #ffb3b3}
 legend.second {color: #e60000}
-#advice {visibility: hidden;}
 #time {color: white; font-size: large;}
 #footer {background: #ffce48; color: black;}
 .black{color: black;}
@@ -21,6 +20,8 @@ legend.second {color: #e60000}
 #information{color: #ff0565}
 #restriction{color: purple; position: absolute; left: 280px; top: 42%;}
 .restriction{color: purple;}
-/*ul {color: #f73333}*/
-/*onclick="window.location.href='https://wearethecity.com/top-3-romantic-gothic-hotels-uk'*/
+#result{color: darkblue;}
+/*ul {color: #f73333}
+'https://wearethecity.com/top-3-romantic-gothic-hotels-uk' --> source for logo picture
+#advice {visibility: hidden;}*/
 
